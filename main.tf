@@ -3,15 +3,15 @@ resource "aws_instance" "web" {
   instance_type = var.instance_type
 
   tags = {
-    Name = "Jenkins-Terraform-EC2"
+    Name = "Mumbai-Terraform-EC2"
   }
-}
-
-resource "aws_s3_bucket" "tf_bucket" {
-  bucket = "jenkins-terraform-demo-${random_id.bucket_id.hex}"
-  force_destroy = true
 }
 
 resource "random_id" "bucket_id" {
   byte_length = 4
+}
+
+resource "aws_s3_bucket" "tf_bucket" {
+  bucket        = "terraform-mumbai-${random_id.bucket_id.hex}"
+  force_destroy = true
 }
